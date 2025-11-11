@@ -702,7 +702,11 @@ def main():
         return load_and_preprocess_data()
 
     df = load_data()
-
+    
+    first_100k = df.iloc[:50000]
+    last_100k = df.iloc[-50000:]
+    df = pd.concat([first_100k, last_100k])
+    
     # Header
     st.title("📊 Product Price Analysis Dashboard")
     st.markdown("Comprehensive analysis of product pricing across multiple sellers and platforms")
